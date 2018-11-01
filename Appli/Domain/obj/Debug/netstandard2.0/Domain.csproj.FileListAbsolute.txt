@@ -1,0 +1,9 @@
+C:\Users\Pmatrosov\Desktop\ProjGit\Appli\Domain\bin\Debug\netstandard2.0\Domain.deps.json
+C:\Users\Pmatrosov\Desktop\ProjGit\Appli\Domain\bin\Debug\netstandard2.0\Domain.dll
+C:\Users\Pmatrosov\Desktop\ProjGit\Appli\Domain\bin\Debug\netstandard2.0\Domain.pdb
+C:\Users\Pmatrosov\Desktop\ProjGit\Appli\Domain\obj\Debug\netstandard2.0\Domain.csprojAssemblyReference.cache
+C:\Users\Pmatrosov\Desktop\ProjGit\Appli\Domain\obj\Debug\netstandard2.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Pmatrosov\Desktop\ProjGit\Appli\Domain\obj\Debug\netstandard2.0\Domain.AssemblyInfoInputs.cache
+C:\Users\Pmatrosov\Desktop\ProjGit\Appli\Domain\obj\Debug\netstandard2.0\Domain.AssemblyInfo.cs
+C:\Users\Pmatrosov\Desktop\ProjGit\Appli\Domain\obj\Debug\netstandard2.0\Domain.dll
+C:\Users\Pmatrosov\Desktop\ProjGit\Appli\Domain\obj\Debug\netstandard2.0\Domain.pdb
