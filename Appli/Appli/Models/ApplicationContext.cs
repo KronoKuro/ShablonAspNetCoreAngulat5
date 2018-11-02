@@ -9,14 +9,14 @@ namespace Appli.Models
 {
     public class ApplicationContext : IdentityDbContext
     {
-        public DbSet<User> User { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public DbSet<Role> Roles { get; set; }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             :base(options)
         {
-             Database.EnsureCreated();
+            // Database.EnsureCreated();
         }
     }
 }

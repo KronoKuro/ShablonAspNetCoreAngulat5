@@ -29,6 +29,9 @@ namespace Appli.Models
                 );
             }
 
+
+            context.SaveChanges();
+
             if (!context.Users.Any())
             {
                 var user = context.Roles.FirstOrDefault(u => u.Name == "User");
@@ -52,6 +55,8 @@ namespace Appli.Models
                     }
                 );
             }
+
+            context.SaveChanges();
         }
     }
 }

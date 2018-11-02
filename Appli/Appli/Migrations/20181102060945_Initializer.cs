@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Appli.Migrations
 {
-    public partial class Initialize : Migration
+    public partial class Initializer : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,7 +29,8 @@ namespace Appli.Migrations
                     Id = table.Column<string>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     NormalizedName = table.Column<string>(nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true)
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    Code = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -81,6 +82,8 @@ namespace Appli.Migrations
                     Password = table.Column<string>(nullable: true),
                     FitstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
+                    ImageData = table.Column<byte[]>(nullable: true),
+                    ImageMimeType = table.Column<string>(nullable: true),
                     RoleId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

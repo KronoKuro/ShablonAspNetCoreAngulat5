@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Appli.Models
 {
-    public class Role: Microsoft.AspNetCore.Identity.IdentityRole<string>
+    public class Role : Microsoft.AspNetCore.Identity.IdentityRole<string>
     {
     }
 }

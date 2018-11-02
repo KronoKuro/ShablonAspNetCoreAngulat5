@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Appli.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20181101114221_Initialize")]
-    partial class Initialize
+    [Migration("20181102060945_Initializer")]
+    partial class Initializer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,6 +25,8 @@ namespace Appli.Migrations
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Code");
 
                     b.Property<string>("ConcurrencyStamp");
 
@@ -209,6 +211,10 @@ namespace Appli.Migrations
 
                     b.Property<string>("FitstName");
 
+                    b.Property<byte[]>("ImageData");
+
+                    b.Property<string>("ImageMimeType");
+
                     b.Property<string>("LastName");
 
                     b.Property<string>("Login");
@@ -272,7 +278,7 @@ namespace Appli.Migrations
             modelBuilder.Entity("Appli.Models.User", b =>
                 {
                     b.HasOne("Appli.Models.Role", "Role")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("RoleId");
                 });
 #pragma warning restore 612, 618
