@@ -60,16 +60,15 @@ namespace Appli.Controllers
         public ClaimsIdentity GetIdentity(string login, string password)
         {
             password = Crypt.Encript(password, login.ToLower());
-            password = Crypt.Encript(password, login.ToLower());
             User user = _db.Users.Include(x => x.Role).FirstOrDefault(u => u.Login == login && u.Password == password);
-            List<Role> roles = _db.Roles.ToList();
-            //Role role = _db.Roles.First(r => r.Id == user.RoleId);
+
             if (user != null)
             {
                 var claims = new List<Claim> {
                 new Claim("name", user.Login),
                 new Claim("id", user.Id.ToString(), ClaimValueTypes.String),
                 new Claim("role", user.Role.Name),
+                new Claim(ClaimTypes.NameIdentifier, user.Login)
             };
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Token");
                 //claimsIdentity.AddClaim(user.Role.Name);
