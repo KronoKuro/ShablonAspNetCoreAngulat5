@@ -29,7 +29,7 @@ export class AuthentificationComponent implements  OnInit {
         localStorage.setItem('id', resp['id']);
         console.log(resp['access_token']);
         console.log(resp['id']);
-        this.router.navigate(['']);
+        this.router.navigate(['user']);
     },
     error => {
         alert(error['error']);

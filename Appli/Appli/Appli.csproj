@@ -33,14 +33,13 @@
     <None Remove="ClientApp\src\app\common\auth.guard.ts" />
     <None Remove="ClientApp\src\app\common\auth.interceptor.ts" />
     <None Remove="ClientApp\src\app\common\authentification\auth.services.ts" />
+    <None Remove="ClientApp\src\app\user\models\user.model.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\admin\components\" />
     <Folder Include="ClientApp\src\app\admin\models\" />
     <Folder Include="ClientApp\src\app\admin\services\" />
-    <Folder Include="ClientApp\src\app\user\components\" />
-    <Folder Include="ClientApp\src\app\user\models\" />
     <Folder Include="ClientApp\src\app\user\services\" />
   </ItemGroup>
 
@@ -48,6 +47,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\common\auth.guard.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\auth.interceptor.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\common\authentification\auth.services.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\user\models\user.model.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

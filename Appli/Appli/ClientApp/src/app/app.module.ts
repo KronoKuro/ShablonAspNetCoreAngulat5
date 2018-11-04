@@ -17,6 +17,11 @@ import { AuthServices } from './common/authentification/auth.services';
 import { RegistrationComponent } from './common/authentification/registration/registration.component';
 import { AuthGuard } from './common/auth.guard';
 import { AuthInterceptor } from './common/auth.interceptor';
+import { CabinetComponent } from './user/components/cabinet/cabinet.component';
+import { UserServices } from './user/user.services';
+import { UserComponent } from './common/user_information/user.component';
+
+
 
 @NgModule({
 declarations: [
@@ -26,7 +31,9 @@ declarations: [
     CounterComponent,
     FetchDataComponent,
     AuthentificationComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    CabinetComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,11 +45,12 @@ declarations: [
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'login', component: AuthentificationComponent },
       { path: 'register', component: RegistrationComponent },
-      { path: 'counter', component: CounterComponent, canActivate: [AuthGuard], data: { expectedRole: 'Admin' } },
+      { path: 'counter', component: CounterComponent, canActivate: [AuthGuard], data: { expectedRole: 'User' } },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'user', component: CabinetComponent, canActivate: [AuthGuard], data: { expectedRole: 'User' }  },
     ])
   ],
-  providers: [AuthServices, AuthGuard,
+  providers: [AuthServices, AuthGuard, UserServices,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

@@ -1,6 +1,8 @@
 ﻿using Appli.Models;
+using Appli.Models.Abstract;
+using Appli.Models.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Appli.Controllers
@@ -8,11 +10,11 @@ namespace Appli.Controllers
     [Route("api/user")]
     public class UserController : Controller
     {
-        private UserManager<ApplicationContext> _userManager;
         private IHostingEnvironment _env;
-        public UserController(UserManager<ApplicationContext> userManager, IHostingEnvironment env)
+        private IUserRepository _db;
+        public UserController(IUserRepository repository, IHostingEnvironment env)
         {
-            _userManager = userManager;
+            _db = repository;
             _env = env;
         }
 
@@ -20,14 +22,16 @@ namespace Appli.Controllers
         public IActionResult Cabinet()
         {
 
-            //var user = User.Identity.AuthenticationType;
-            return Ok();
+            var userId = User.Identity.getUserId<string>();
+            User user = _db.Get(userId);
+            return Ok(user);
         }
 
-        /*public User GetCurrentUser()
+        [Authorize]
+        [HttpGet("{id}")]
+        public IActionResult GetUser(string id)
         {
-            var user = await GetCurrentUserAsync();
-            return user;
-        }*/
+            return Ok(_db.Get(id));
+        }
     }
 }
