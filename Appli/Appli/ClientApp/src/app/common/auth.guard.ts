@@ -14,12 +14,17 @@ export class AuthGuard implements CanActivate {
   canActivate(router: ActivatedRouteSnapshot): boolean {
     const expectedRole = router.data.expectedRole;
     const token = localStorage.getItem('access_token');
+    if(token != null){
     const tokenPayLoad = decode(token);
     if (!this.authService.checkAcess() || tokenPayLoad.role !== expectedRole) {
       this.router.navigate(['login']);
       return false;
     }
     return true;
+    }
+    else{
+      this.router.navigate(['login']);
+    }
   }
 
   IsAdmin() {

@@ -20,6 +20,7 @@ import { AuthInterceptor } from './common/auth.interceptor';
 import { CabinetComponent } from './user/components/cabinet/cabinet.component';
 import { UserServices } from './user/user.services';
 import { UserComponent } from './common/user_information/user.component';
+import { UserInCabinetComponent } from './user/components/cabinet/userincabinet/userincabinet.component';
 
 
 
@@ -33,7 +34,8 @@ declarations: [
     AuthentificationComponent,
     RegistrationComponent,
     CabinetComponent,
-    UserComponent
+    UserComponent,
+    UserInCabinetComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -47,7 +49,7 @@ declarations: [
       { path: 'register', component: RegistrationComponent },
       { path: 'counter', component: CounterComponent, canActivate: [AuthGuard], data: { expectedRole: 'User' } },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'user', component: CabinetComponent, canActivate: [AuthGuard], data: { expectedRole: 'User' }  },
+      { path: 'user', component: UserInCabinetComponent, canActivate: [AuthGuard], data: { expectedRole: 'User' }  },
     ])
   ],
   providers: [AuthServices, AuthGuard, UserServices,
