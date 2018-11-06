@@ -15,4 +15,8 @@ export class UserServices {
     return this.http.get<User>(this.url + '/' + id);
   }
 
+  getUsers() {
+    return this.http.get<User[]>('api/admin');
+  }
+
 }

@@ -21,6 +21,8 @@ import { CabinetComponent } from './user/components/cabinet/cabinet.component';
 import { UserServices } from './user/user.services';
 import { UserComponent } from './common/user_information/user.component';
 import { UserInCabinetComponent } from './user/components/cabinet/userincabinet/userincabinet.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserControlComponent } from './admin/components/usercontrol/usercontrol.component';
 
 
 
@@ -36,6 +38,8 @@ declarations: [
     CabinetComponent,
     UserComponent,
     UserInCabinetComponent,
+    UserControlComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -49,7 +53,8 @@ declarations: [
       { path: 'register', component: RegistrationComponent },
       { path: 'counter', component: CounterComponent, canActivate: [AuthGuard], data: { expectedRole: 'User' } },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'user', component: UserInCabinetComponent, canActivate: [AuthGuard], data: { expectedRole: 'User' }  },
+      { path: 'user', component: UserInCabinetComponent, canActivate: [AuthGuard], data: { expectedRole: 'User' } },
+      { path: 'admin', component: UserControlComponent, canActivate: [AuthGuard], data: { expectedRole: 'Admin' } },
     ])
   ],
   providers: [AuthServices, AuthGuard, UserServices,
