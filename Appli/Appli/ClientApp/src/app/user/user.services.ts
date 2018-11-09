@@ -9,14 +9,14 @@ export class UserServices {
 
   constructor(private http: HttpClient) {}
 
-  private url: string = 'api/user';
+  private url: string = 'api/cabinet/user';
 
   getUser(id: string) {
     return this.http.get<User>(this.url + '/' + id);
   }
 
   getUsers() {
-    return this.http.get<User[]>('api/admin');
+    return this.http.get<User[]>('api/admin/overview');
   }
 
 }

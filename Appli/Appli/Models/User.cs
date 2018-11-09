@@ -13,7 +13,7 @@ namespace Appli.Models
 
         public string Password { get; set; }
 
-        public string FitstName { get; set; }
+        public string FirstName { get; set; }
 
         public string LastName { get; set; }
 

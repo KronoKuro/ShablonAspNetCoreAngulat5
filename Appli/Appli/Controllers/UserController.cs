@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Appli.Controllers
 {
-    [Route("api/user")]
+    [Authorize]
+    [Route("api/cabinet/user")]
     public class UserController : Controller
     {
         private IHostingEnvironment _env;
@@ -26,8 +27,7 @@ namespace Appli.Controllers
             User user = _db.Get(userId);
             return Ok(user);
         }
-
-        [Authorize]
+        
         [HttpGet("{id}")]
         public IActionResult GetUser(string id)
         {

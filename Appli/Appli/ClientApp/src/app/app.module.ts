@@ -23,6 +23,7 @@ import { UserComponent } from './common/user_information/user.component';
 import { UserInCabinetComponent } from './user/components/cabinet/userincabinet/userincabinet.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserControlComponent } from './admin/components/usercontrol/usercontrol.component';
+import { reduce } from 'rxjs/operator/reduce';
 
 
 
@@ -38,8 +39,8 @@ declarations: [
     CabinetComponent,
     UserComponent,
     UserInCabinetComponent,
+    AdminComponent,
     UserControlComponent,
-    AdminComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -53,8 +54,26 @@ declarations: [
       { path: 'register', component: RegistrationComponent },
       { path: 'counter', component: CounterComponent, canActivate: [AuthGuard], data: { expectedRole: 'User' } },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'user', component: UserInCabinetComponent, canActivate: [AuthGuard], data: { expectedRole: 'User' } },
-      { path: 'admin', component: UserControlComponent, canActivate: [AuthGuard], data: { expectedRole: 'Admin' } },
+      //Пользователь
+      { path: 'cabinet', redirectTo: "cabinet/user", pathMatch: 'full' },
+      { path: 'user', redirectTo: "cabinet/user", pathMatch: 'full' },
+      {
+        path: 'cabinet', component: CabinetComponent, canActivate: [AuthGuard], data: { expectedRole: 'User' },
+        children: [
+          { path: "user", component: UserInCabinetComponent, canActivate: [AuthGuard], data: { expectedRole: 'User' } },
+          { path: "", component: UserInCabinetComponent, canActivate: [AuthGuard], data: { expectedRole: 'User' }, }
+        ]
+      },
+      //Админ
+      { path: 'admin', redirectTo: "admin/overview", pathMatch: 'full' },
+      {
+        path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { expectedRole: 'Admin' },
+        children: [
+          { path: "overview", component: UserControlComponent, canActivate: [AuthGuard], data: { expectedRole: 'Admin' } },
+          { path: "", component: UserControlComponent, canActivate: [AuthGuard], data: { expectedRole: 'Admin' }, }
+        ]
+      },
+      //{ path: 'overview', component: UserControlComponent, canActivate: [AuthGuard], data: { expectedRole: 'Admin' } },
     ])
   ],
   providers: [AuthServices, AuthGuard, UserServices,

@@ -1,10 +1,12 @@
 ﻿using Appli.Models.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Appli.Controllers
 {
-    [Route("api/admin")]
+    [Authorize(Roles = "Admin")]
+    [Route("api/admin/overview")]
     public class AdminController : Controller
     {
         private IHostingEnvironment _env;

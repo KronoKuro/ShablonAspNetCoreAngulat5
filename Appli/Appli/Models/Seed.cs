@@ -41,6 +41,8 @@ namespace Appli.Models
                     {
                         Id = Guid.NewGuid().ToString(),
                         Login = "User",
+                        FirstName = "UserFirstName",
+                        LastName = "UserLastName",
                         Password = "7Rbtv04wQNxgyhu4OpD7MQ==",
                         RoleId = string.IsNullOrEmpty(user.Id) ? null : user.Id
                     }
@@ -50,6 +52,8 @@ namespace Appli.Models
                     {
                         Id = Guid.NewGuid().ToString(),
                         Login = "Admin",
+                        FirstName = "AdminFirstName",
+                        LastName = "AdminLastName",
                         Password = "o6dRJbVxag8bW3NhXG5K7g==",
                         RoleId = string.IsNullOrEmpty(admin.Id) ? null : admin.Id
                     }
